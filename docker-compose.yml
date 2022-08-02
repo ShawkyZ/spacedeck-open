@@ -1,10 +1,52 @@
 version: "2.0"
 services:
   spacedeck:
+    depends_on:
+      - postgres
     build: .
+    networks:
+      - devnet
     container_name: spacedeck
     ports:
       - "9666:9666"
     volumes:
       - ./storage:/app/storage
       - ./database:/app/database
+      
+  postgres:
+    container_name: postgres
+    image: postgres
+    networks:
+      - devnet 
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+       - ./postgres-init.sql:/docker-entrypoint-initdb.d/postgres-init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - devnet
+    restart: unless-stopped
+
+networks:
+  devnet: {}
+volumes:
+  postgres:
+  pgadmin:
