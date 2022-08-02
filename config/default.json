@@ -7,17 +7,17 @@
   "endpoint": "http://localhost:9666",
   "invite_code": "top-sekrit",
 
-  "storage_dialect": "sqlite",
+  "storage_dialect": "postgres",
 
-  "storage_host": "localhost",
+  "storage_host": "postgres",
   "storage_database": "spacedeck",
-  "storage_username": "username",
-  "storage_password": "password",
+  "storage_username": "postgres",
+  "storage_password": "changeme",
 
   "storage_local_path": "./storage",
-  "storage_local_db": "./database/database.sqlite",
-  "storage_region": "eu-central-1",
-  "storage_endpoint": "http://localhost:4572",
+  "storage_local_db": "",
+  "storage_region": "",
+  "storage_endpoint": "",
   "storage_bucket": "my_spacedeck_bucket",
   "storage_cdn": "/storage",
 

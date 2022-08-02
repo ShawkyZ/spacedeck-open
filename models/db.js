@@ -226,6 +226,7 @@ module.exports = {
       foreignKey: {
         name: 'creator_id'
       },
+      constraints: false,
       as: 'creator'
     });
 
@@ -233,6 +234,7 @@ module.exports = {
       foreignKey: {
         name: 'user_id'
       },
+      constraints: false,
       as: 'user'
     });
 
@@ -240,6 +242,7 @@ module.exports = {
       foreignKey: {
         name: 'space_id'
       },
+      constraints: false,
       as: 'space'
     });
 
@@ -247,6 +250,7 @@ module.exports = {
       foreignKey: {
         name: 'user_id'
       },
+      constraints: false,
       as: 'user'
     });
 
@@ -254,6 +258,7 @@ module.exports = {
       foreignKey: {
         name: 'space_id'
       },
+      constraints: false,
       as: 'space'
     });
 
@@ -261,6 +266,7 @@ module.exports = {
       foreignKey: {
         name: 'user_id'
       },
+      constraints: false,
       as: 'user'
     });
 
@@ -268,6 +274,7 @@ module.exports = {
       foreignKey: {
         name: 'space_id'
       },
+      constraints: false,
       as: 'space'
     });
 
